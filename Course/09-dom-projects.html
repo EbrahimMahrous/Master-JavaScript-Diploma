@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects</title>
+</head>
+<body>
+
+
+    <!-- 
+        09-In this lesson
+        1. Document Object Model (DOM).
+        2. document.querySelector()
+        3. innerHTML
+        4. 3 Projects using the DOM
+        5. onkeydown = ""
+        6. More details about strings + window object
+    -->
+
+
+
+
+    <!-- 
+    Process for Javascript
+    1. Figure out what steps we need(algorithm).
+    2. Convert these steps into code.
+    -->
+    <!-- 
+    Steps
+    1. if the text is "subscribe" ==> "subscribed".
+    2. otherwise, change it back ==> "subscribe".
+    -->
+    <p>YouTube Subscribe Button</p>
+    <button onclick="subscribe()" class="js-subscribe-button">Subscribe</button>
+
+
+    <!-- 
+    Steps
+    when we click the button:
+    1. Get the text in the text box.
+    2. if amount <$40, add $10
+    3. Display total on the page.
+    -->
+    <!-- 
+    click, keydowns ==> events
+    onclick, onkeydown ==> event listeners
+    -->
+    <!-- 
+    onclick        ==> click
+    onKetdown      ==> Key press
+    onscrol        ==> scrolling
+    onmouseenter   ==> hovering over
+    onmouseleave   ==> stop hovering over
+    -->
+    <!-- 
+    steps
+    when we press a Key:
+    1. Check if the key is "Enter".
+    2. if it is, do the same thing as the calculate button.
+    -->
+    <!-- Every event listener gets an event object -->
+    <p>Amazon Shipping calculator</p>
+    <p>Order under $40 = +$10 Shipping</p>
+    <p>Order over $40 = FREE Shipping</p> 
+    <input class="js-cost-input" placeholder="Cost of order" onkeydown="handleCostKeydown(event)"> 
+    <button onclick="CalculateTotal()">Calculate</button>
+    <p class="js-total-cost" ></p>
+
+    <script>
+
+        // if a string only contains a number, and we - * / ==> it will be converted into a number.
+        String(25)
+        console.log('25' - 5) // 20  // This called Type Coercion
+        console.log('25' + 5) // 255
+
+        // we don't have to type "window", javascript will automatically add it.
+        window.document
+        window.console.log('window')
+        window.alert
+
+        function handleCostKeydown(event){
+            if(event.key === 'Enter'){
+                CalculateTotal()
+            }
+        }
+
+        function CalculateTotal(){
+            const inputElement =  document.querySelector('.js-cost-input')
+            // let cost = inputElement.value 
+            // console.log(cost)        // 30
+            // console.log(typeof cost) // string
+            let cost = Number(inputElement.value)  
+            if(cost < 40){
+                cost = cost + 10
+                //console.log(cost)  // 3010 This called Type Coercion  // whenever we get a value from the DOM, the value will be a string.
+             }
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`
+        }
+
+
+
+        function subscribe(){
+            const buttonElement = document.querySelector('.js-subscribe-button')
+            if(buttonElement.innerText === 'Subscribe'){
+                buttonElement.innerHTML = 'Subscribed'
+            }else{
+                buttonElement.innerHTML = 'Subscribe'
+            }
+        }
+    </script>
+</body>
+</html>

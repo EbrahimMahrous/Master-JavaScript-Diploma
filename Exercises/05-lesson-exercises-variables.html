@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5 Exercises - Variables</title>
+</head>
+<body>
+    
+
+    <!-- 5h. In the Cart Quantity project, add 2 more buttons '+4' and '+5', which increase the quantity by 4 and 5 when you click them. Try using += -->
+     <button onclick="
+     cartQuantity += 4
+     console.log(`quantity: ${cartQuantity}`)
+     ">+4</button>
+
+     <button onclick="
+     cartQuantity += 5
+     console.log(`quantity: ${cartQuantity}`)
+     ">+5</button>
+
+     <!-- 5i. In the Cart Quantity project, add a button 'Remove from cart', which decreases the cart quantity by 1 -->
+      <button onclick="
+      cartQuantity--;
+      console.log(`quantity: ${cartQuantity}`)
+      ">Remove from cart</button>
+
+      <!-- 5j. Add 2 buttons '-2' and '-3', which decrease the quantity by 2 and 3. -->
+      <button onclick="
+      cartQuantity -= 2;
+      console.log(`quantity: ${cartQuantity}`)
+      ">-2</button>
+
+    <button onclick="
+    cartQuantity -= 3;
+    console.log(`quantity: ${cartQuantity}`)
+    ">-3</button>
+
+    <!-- 5k. Use the shortcuts -- and -= in 5i and 5j. -->
+
+
+
+    <!-- Simple calculator -->
+
+    <!-- Challenge Exercises
+        We'll build a calculator (don't worry, we'll do it step by step).
+        1. Go to 'supersimple.dev/projects/calculator' in your browser.
+        2. Open the Console and click the calculator buttons to see how it works.
+        Setup: create a new file calculator.html for this project.
+        51. Add the HTML structure (<!DOCTYPE html>, <html>, <head>, <body>). Add a <title> with the text 'Calculator'.
+        5m. Create these 5 buttons: 1 2 3  + =
+    -->
+
+    <!-- 5o. When we click the '1' button: Add the string '1' to the calculation variable: calculation += '1'; Display the calculation in the console: console.log(calculation); -->
+
+    <!-- 5p. Do the same for the '2', '3', and '+' buttons (add ' + ' instead of '+'). -->
+
+
+    <!-- 
+    Sq. When we click the '=' button, use the code: eval(calculation); 
+    (eval(...) converts the calculation string into actual math. 
+    Save the result back in 'calculation': calculation = eval(calculation); 
+    Display the result in the console: console.log(calculation); 
+    -->
+
+    <p>Simple calculator</p>
+
+    <button onclick="
+      calculation += '1';
+      console.log(calculation);
+    ">1</button>
+
+    <button onclick="
+      calculation += '2';
+      console.log(calculation);
+    ">2</button>
+
+    <button onclick="
+      calculation += '3';
+      console.log(calculation);
+    ">3</button>
+
+    <button onclick="
+      calculation += ' + ';
+      console.log(calculation);
+    ">+</button>
+
+    <button onclick="
+      // Note: eval() takes a string and runs it as code.
+      // Avoid using eval() in real world projects since
+      // it can potentially be given harmful code to run.
+      // Only use eval() for learning purposes.
+      calculation = eval(calculation);
+      console.log(calculation);
+    ">=</button>
+
+
+    <script>
+        
+
+        // 5a. Create a <script> element. Inside the <script>, create a variable called 'name', and save your name in this variable (as a string).
+            const name = 'Ibrahim'
+
+        // 5b. Continuing from 5a, display the message 'My name is: ${name}' in the console (insert the 'name' variable created in 5a into this message).
+        console.log(`My name is: ${name}`)
+
+        // 5c. At a restaurant, you order 1 coffee ($5), 2 bagels ($3 each), and 1 soup ($9). Calculate the cost and save it in a variable called 'cost'.
+        const cost = 5 + 2 * 3 + 9 ;
+
+        // 5d. Continuing from 5c, display 'Cost of food: $${cost}' in the console.
+        console.log(`Cost of food: $${cost}`)
+
+        // 5e. Let's say the restaurant charges a 10% tax. Using the 'cost' variable from 5c, calculate the tax (hint: multiply by 0.1), and save the result in a variable.
+        const tax = cost * 0.1
+        
+
+        // 5f. Continuing from 5e, display 'Tax (10%): $${tax}' in the console.
+        console.log(`Tax (10%): $${tax}`)
+
+        // 5g. Continuing from 5f, calculate the total (cost + tax), save it in a variable called 'totalCost', and display the message 'Total cost: $${totaICost}' in the console.
+        const totalCost = cost + tax;
+        console.log(`Total cost: $${totalCost}`)
+
+        // 
+        let cartQuantity = 0
+
+        // 5n. Create a <script>, create a variable called 'calculation', and save an empty string inside: let calculation = '';
+        // (This variable will store the calculation like '1 + 2' or '11 + 2 + 2')
+        let calculation = '';
+
+
+    </script>
+</body>
+</html>

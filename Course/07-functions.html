@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+  </head>
+  <body>
+
+    <!--  
+    whats is a function?
+    A function lets us reuse code.
+    -->
+    <script>
+        // function function1(){
+        //     console.log('hello')
+        //     console.log(2 + 2)
+        // }
+        // function1()
+
+        // Return Statement ==> lets us get a value out of a function.
+        // Parameter ==> puts a value into a function.
+
+        // Parameter Works the same way as a variable.
+        // Rules for parameter names: 
+        // 1. Can't use special words example: function.
+        // 2. can't start with a number.
+        // 3. can't use special characters except: $ _
+        // 4. Best practice = use camelCase.
+
+        function calculateText(cost, taxPercent = 0.1){
+           console.log(cost * taxPercent) 
+        }
+        calculateText(20, 0.1)
+
+
+    </script>
+  </body>
+</html>

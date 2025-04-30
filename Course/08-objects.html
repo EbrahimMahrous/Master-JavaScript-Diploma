@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        // what is an objects ==> An objects groups multiple values together.
+        // An object is another type of value.
+        // objects ==> let us use multiple values together.
+        // Inside an object, we can save any type of value.
+        const product = {
+          name: 'socks',  // prperty-value Pair
+          price: 1090
+        };
+        console.log(product);
+        console.log(product.name); 
+        console.log(product.price);
+  
+        product.name = 'cotton socks';
+        console.log(product);
+  
+        product.newProperty = true;
+        console.log(product);
+  
+        delete product.newProperty;
+        console.log(product);
+        
+  
+        
+        const product2 = {
+          name: 'shirt',
+          'delivery-time': '1 day',
+          rating: {
+            stars: 4.5,
+            count: 87
+          },
+          // A function is another type of value.
+          // Function inside object = Method
+          // object + function = method
+          fun: function function1() {
+            console.log('function inside object');
+          }
+        };
+        // which one should we use?
+        // 1. use dot notation by default.
+        // 2. for prperties that don't work, use bracket notation.
+        console.log(product2);
+        console.log(product2.name);
+        console.log(product2['name']); // Bracket Notation ==> Lets us use prperties that don't work with dot notation.
+        // console.log(product2.delivery-time); // error
+        console.log(product2['delivery-time']);
+        
+        console.log(product2.rating.count);  // 87
+        product2.fun();
+  
+        // object + function = method
+        console.log(typeof console);     // object ==> Built=in Object They are provided by the language.
+        console.log(typeof console.log); // function
+  
+        // 2 More Built-in Objects ==> JSON   localStorage
+        // JSON Built=in Object ==> helps us work with JSON and convert javaScript Object yo JSON.
+        /*
+        JSON
+        JavaScript Object Notation
+        - a syntax 
+        - similar to JavaScript object
+        - but has less feature
+        - json is more universal.
+        - we use Json ==> when we send data between computers or when we store data.
+        - dosn't support function
+        - convert Json to Javascript object Use methods Json.parse()
+        */
+        console.log(JSON.stringify(product2));         // convert object to JSON.
+        console.log(typeof JSON.stringify(product2));  // string
+  
+        const jsonString = JSON.stringify(product2); 
+        console.log(JSON.parse(jsonString));           // convert JSON to object  
+        
+  
+        // Next built-in object: localStorage
+        // variable are temporary
+        // if we refresh / close the page, all the variables are deleted.
+
+
+
+
+
+        // Auto-Boxing not work with null and undefiend
+        console.log('hello'.length);        // 5
+        console.log('hello'.toUpperCase()); // HELLO
+  
+        // objects are references
+        const object1 = {
+          message: 'hello',
+          price: 799
+        };
+
+        
+        // This means that also object1 reference to object2 محروووس
+        // بيقولك هنا ان عندي اوبجكت واحد جواه شوية خصائص ف انا عايز اعمل اوبجت اتنين ويشاور ايضا ع نفس خصائص اوبجكت 1 هي دي الخلاصة هنا
+        // copy by reference
+        const object2 = object1;
+  
+        object1.message = 'Good job!';
+        console.log(object1);
+        console.log(object2);
+  
+
+        const object3 = {
+          message: 'Good job!',
+          price: 799
+        };
+        // we can't compare objects directly.
+        console.log(object1 === object3);  // false
+
+        // compares the references, not the values inside.
+        console.log(object2 === object1);  // true
+  
+
+
+        const object4 = {
+          message: 'Good Job!',
+          price: 799
+        }
+
+        // const message = object4.message;
+        const { message, price } = object4;    // Destruturing ==> easier way to take properties out of an objects.
+        console.log(message);
+        console.log(price);
+
+
+        const object5 = {
+          message: message, // shorthand Property
+          message,           // shorthand Method
+          // method: function function1(){
+          //   console.log('method')
+          // }
+          method() {                      // shorthand Method syntax
+            console.log('method')
+          }
+        }
+        console.log(object5)
+        object5.method()
+
+        /*
+        08-In this lesson
+        1. objects = group related values together.
+        2. Added a score to Rock Paper Scissors
+        3. Built-in objects(JSON, localStorage)
+        4. More details (null, auto-boxing, references)
+        5. Shortcuts (destructuring, shorthand property, shorthand method)
+        */
+  
+        
+      </script>
+</body>
+</html>
+
+<!-- 4:49 -->

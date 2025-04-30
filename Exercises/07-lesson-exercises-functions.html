@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7 Exercises - Functions</title>
+</head>
+<body>
+    
+
+<!-- 
+Challenge Exercises
+7j. Create a copy of the Calculator project from exercise 5r (if you didn't do 5r, copy the code for 5r from the solutions).
+• Notice there's a lot of duplicated code in the buttons.
+• Create a function 'updateCaIculation' and reuse the code.
+-->
+    <p>Simple calculator</p>
+        
+    <button onclick="
+        updateCaIculation('1')
+    ">1</button>
+
+    <button onclick="
+        updateCaIculation('2')
+    ">2</button>
+
+    <button onclick="
+        updateCaIculation('3')
+    ">3</button>
+
+    <button onclick="
+        updateCaIculation(' + ')
+    ">+</button>
+
+    <button onclick="
+    updateCaIculation('4')
+    ">4</button>
+
+    <button onclick="
+    updateCaIculation('5')
+    ">5</button>
+
+    <button onclick="
+    updateCaIculation('6')
+    ">6</button>
+
+    <button onclick="
+    updateCaIculation(' - ')
+    ">+</button>
+
+    <button onclick="
+    updateCaIculation('7')
+    ">7</button>
+
+    <button onclick="
+    updateCaIculation('8')
+    ">8</button>
+
+    <button onclick="
+    updateCaIculation('9')
+    ">9</button>
+
+    <button onclick="
+    updateCaIculation(' * ')
+    ">*</button>
+
+    <button onclick="
+    updateCaIculation('0')
+    ">0</button>
+
+    <button onclick="
+    updateCaIculation('.')
+    ">.</button>
+
+    <button onclick="
+        // Note: eval() takes a string and runs it as code.
+        // Avoid using eval() in real world projects since
+        // it can potentially be given harmful code to run.
+        // Only use eval() for learning purposes.
+        calculation = eval(calculation);
+        console.log(calculation);
+    ">=</button>
+
+
+
+    <!-- 
+    7k. Create a copy of the Cart Quantity project from exercise 6I.
+    • Create a function 'updateCartQuantity' and reuse the code.
+    -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <button onclick="
+        updateCartQuantity(1)
+    ">Add to cart</button>
+
+    <button onclick="
+        updateCartQuantity(2)
+    ">+2</button>
+
+    <button onclick="
+        updateCartQuantity(3)
+    ">+3</button>
+
+    <button onclick="
+        updateCartQuantity(4)
+    ">+4</button>
+
+    <button onclick="
+        updateCartQuantity(5)
+    ">+5</button>
+
+     <button onclick="
+        updateCartQuantity(-1)
+     ">Remove from cart</button>
+
+     <button onclick="
+        updateCartQuantity(-2)
+     ">-2</button>
+
+   <button onclick="
+        updateCartQuantity(-3)
+   ">-3</button>  
+
+    <button onclick="
+        cartQuantity = 0;
+        console.log('Cart was reset.');
+        console.log(`Cart quantity: ${cartQuantity}`);
+    ">Reset Cart</button>
+
+
+
+<!-- 
+71. Modify 'updateCartQuantity' from 7h so that if the quantity is invalid, alert(); and then return; (this is called an early return). 
+An early return make our code cleaner because we can remove the 'else-if' / 'else'.
+
+If (condition) {
+alert( 'The cart is full') •
+} else {
+}
+
+If (condition) {
+alert( 'The cart is full') •
+return;
+-->
+
+    <script>
+        let calculation = ' ';
+        function updateCaIculation(value){
+            calculation += value;
+            console.log(calculation);
+        }
+
+        let cartQuantity = 0;
+        function updateCartQuantity(change){
+        if(cartQuantity + change > 10){
+            alert('The cart is full')
+            return                  // An early return make our code cleaner because we can remove the 'else-if' / 'else'.
+        } 
+        if(cartQuantity + change < 0){
+            alert('Not enough items in the cart');
+            return                  // An early return make our code cleaner because we can remove the 'else-if' / 'else'.
+        }
+        // else{
+            cartQuantity += change
+            console.log(`quantity: ${cartQuantity}`)
+        //}
+        }
+
+/*
+7a. Create a function called 'greet' that displays the message 'Hello!' in the console. Call / run this function a few times using: greet();
+
+7b. Continuing from 7a, add a parameter called 'name' to the 'greet' function and display the message: 'Hello ${name}!' Call the function a few times with different names: greet(ISimonI);
+
+7c. Try calling greet() without a name (it will display 'Hello undefined!'). Modify the function so that if 'name' is undefined, it will display 'Hi there!' instead. (Hint: use an if-statement. Since undefined is a falsy value, you can use: if (!name) { ... } to check if 'name' is undefined).
+*/
+function greet(name){
+    if(!name){
+        console.log(`Hi there!`)
+    }else{
+        console.log(`Hello! ${name}`)
+    } 
+}
+greet('Ali')
+greet('Mahrous')
+greet()
+
+
+
+// 7d. Create a function 'convertToFahrenheit(celsius)' that takes a number in degrees Celsius and returns a number in degrees Fahrenheit.
+// • Formula: Fahrenheit = (Celsius *9 / 5) + 32
+// • convertToFahrenheit(25) => 77
+function convertToFahrenheit(celsius){
+    return (celsius * 9/5) + 32
+}
+console.log(convertToFahrenheit(25));
+
+// 7e. Create a function 'convertToCeIsius(fahrenheit)' that takes a number in degrees Fahrenheit and returns a number in degrees Celsius.
+// • Formula: Celsius = (Fahrenheit - 32) * 5/9
+// • convertToCelsius(86) => 30
+function convertToCeIsius(fahrenheit){
+    return (fahrenheit -32) * 5/9
+}
+console.log(convertToCeIsius(86));
+
+
+// 7f. Create a function 'convertTemperature(degrees, unit)' that takes a number and a unit ('C' or 'F'), and converts it into the other unit.
+// • convertTemperature(25, 'C') => '77F'
+// • convertTemperature(86, 'F') => '30C'
+// Note: return a string, and try to reuse the functions from 7d and 7e.
+
+
+function convertTemperature(degrees, unit){
+    if (unit === 'c'){
+        const result = (degrees * 9/5) + 32;
+        return `${result} F`
+    }else if(unit === 'f'){
+        const result = (degrees -32) * 5/9;
+        return `${result} C`
+    }
+}
+console.log(convertTemperature(25, 'c'))
+console.log(convertTemperature(86, 'f'))
+
+
+/*
+7g. Create a function convertLength(length, from, to) that takes a number and a unit ('km' or 'miles') and converts the length to another
+unit ('km' or 'miles'). Note: 1 mile = 1.6 km (approximately).
+• convertLength(50, 'miles', 'km') => '80 km'
+• convertLength(32, 'km', 'miles') => '20 miles'
+• convertLength(50, 'km', 'km') => '50 km'
+
+7h. Update convertLength to support converting between km, miles, and also feet. Note: 1 mile = 5280 ft, 1 km = 3281 ft (approximately).
+• convertLength(5, 'miles', 'km') => '8 km'
+• convertLength(5, 'miles', 'ft') => '26400 ft'
+• convertLength(5, 'km', 'ft') => '16405 ft'
+
+7i. Update convertLength so that if you give it an invalid unit, it will return Invalid unit: ${unit}
+• convertLength(5, 'lbs', 'lbs') => 'Invalid unit: 'lbs'
+
+*/
+
+function convertLength(length, from, to){
+
+    if(from != 'km' && from != 'miles' && from != 'ft'){
+        return `Invalid unit: ${from}`
+    }else if(to != 'km' && to != 'miles' && to != 'ft'){
+        return `Invalid unit: ${to}`
+    } 
+
+    if(from === 'km' && to === 'miles'){
+        return `${length / 1.6} ${to}`;
+
+    } else if (from === 'miles' && to === 'km'){
+        return `${length * 1.6} ${to}`;
+        // دا طريقة تفكري انا حاول تطورها يا محروووس بق
+        // const result = length * 1.6;
+        // console.log(result);         
+
+        // You can also do if (from === 'km' && to === 'km) { ... }
+        // if (from === to) is a trick you can use to save some code.
+    }else if(from === 'km' && to === 'ft'){
+        return `${length * 3281} ${to}`;
+
+    } else if(from === 'miles' && to === 'ft'){
+        return `${length * 5280} ${to}`;
+
+    } else if(from === to){
+          return `${length} ${to}`;
+    }
+}
+
+      console.log(convertLength(50, 'miles', 'km'));
+      console.log(convertLength(32, 'km', 'miles'));
+      console.log(convertLength(50, 'km', 'km'));
+
+      console.log(convertLength(5, 'miles', 'km'));
+      console.log(convertLength(5, 'miles', 'ft'));
+      console.log(convertLength(5, 'km', 'ft'));
+
+      console.log(convertLength(5, 'lbs', 'lbs'));
+
+    </script>
+</body>
+</html>

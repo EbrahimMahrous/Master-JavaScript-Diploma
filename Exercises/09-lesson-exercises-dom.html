@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 9 Exercises - Document Object Model (DOM)</title>
+</head>
+<body>
+    
+
+<!-- 9a. Create a <button>9a</button>. Use document.querySeIector('button') to get the button from the page, and then display it in the console. -->
+<button>9a</button>
+
+<!-- 9b. Continuing from 9a, create another button <button>9b</button> below. Using JavaScript, change the text in the second button to '9b done!' (hint: add a class and use .querySelector). -->
+<button class="js-button">9b</button>
+
+<!-- 9c. Create 2 buttons 'heads' and 'tails', and a paragraph (<p></p>) underneath. When clicking the 'heads' button, display 'You chose: heads' in the paragraph. When
+the 'tails' button, display 'You chose: tails'. -->
+<button onclick="
+document.querySelector('.js-choice').innerHTML = 'You chose: heads'
+">Heads</button>
+
+<button onclick="
+document.querySelector('.js-choice').innerHTML = 'You chose: Tails'
+">Tails</button>
+
+<p class="js-choice"></p>
+
+<!-- 
+9d. Create a text box (<input>) and a submit button. When clicking 'Submit', display 'Your name is: ${text}' on the page (${text} = the text inside the text box) (hint: use .value to get the text inside an <input>).
+-->
+<input class="js-name-input" placeholder="Name" onkeydown="
+if(event.key === 'Enter'){
+    displayMessage()
+}
+" onkeyup="displayMessage()">
+
+<button onclick="displayMessage()">Submit</button>
+
+<p class="js-message"></p>
+
+
+
+
+
+
+
+
+
+<!-- 
+Challenge Exercises
+9g. Create a file 9g.htmI and copy the code from 09-dom-projects.html into this file. In the Amazon Shipping Calculator, enter a cost of 7.99 and click 'Calculate'. What issue do you see? Find a fix for this issue. 
+
+$17.990000000000002
+-->
+
+<br>
+<br>
+<br>
+
+<p>Amazon Shipping calculator</p>
+<p>Order under $40 = +$10 Shipping</p>
+<p>Order over $40 = FREE Shipping</p> 
+<input class="js-cost-input" placeholder="Cost of order" onkeydown="handleCostKeydown(event)"> 
+<button onclick="CalculateTotal()">Calculate</button>
+<p class="js-total-cost" ></p>
+
+
+
+<br>
+<br>
+<br>
+
+<button onclick="displayCartQuantity()">Show Quantity</button>
+
+<button onclick="
+updateCartQuantity(1)
+">Add to cart</button>
+
+<button onclick="
+updateCartQuantity(2)
+">+2</button>
+
+<button onclick="
+updateCartQuantity(3)
+">+3</button>
+
+<button onclick="
+updateCartQuantity(4)
+">+4</button>
+
+<button onclick="
+updateCartQuantity(5)
+">+5</button>
+
+<button onclick="
+updateCartQuantity(-1)
+">Remove from cart</button>
+
+<button onclick="
+updateCartQuantity(-2)
+">-2</button>
+
+<button onclick="
+updateCartQuantity(-3)
+">-3</button>  
+
+<button onclick="
+cartQuantity = 0;
+console.log('Cart was reset.');
+displayCartQuantity()
+// console.log(`Cart quantity: ${cartQuantity}`);
+">Reset Cart</button>
+
+<p class="js-display-cart-quantity"></p>
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+<p>Simple calculator</p>
+        
+<button onclick="
+    updateCaIculation('1')
+">1</button>
+
+<button onclick="
+    updateCaIculation('2')
+">2</button>
+
+<button onclick="
+    updateCaIculation('3')
+">3</button>
+
+<button onclick="
+    updateCaIculation(' + ')
+">+</button>
+
+<button onclick="
+updateCaIculation('4')
+">4</button>
+
+<button onclick="
+updateCaIculation('5')
+">5</button>
+
+<button onclick="
+updateCaIculation('6')
+">6</button>
+
+<button onclick="
+updateCaIculation(' - ')
+">-</button>
+
+<button onclick="
+updateCaIculation('7')
+">7</button>
+
+<button onclick="
+updateCaIculation('8')
+">8</button>
+
+<button onclick="
+updateCaIculation('9')
+">9</button>
+
+<button onclick="
+updateCaIculation(' * ')
+">*</button>
+
+<button onclick="
+updateCaIculation('0')
+">0</button>
+
+<button onclick="
+updateCaIculation('.')
+">.</button>
+
+<button onclick="
+// Note: eval() takes a string and runs it as code.
+// Avoid using eval() in real world projects since
+// it can potentially be given harmful code to run.
+// Only use eval() for learning purposes.
+calculation1 = eval(calculation1);
+
+
+// console.log(calculation1)
+displayCalculation1()
+localStorage.setItem('calculation1', calculation1);
+">=</button>
+
+<button onclick="
+updateCaIculation(' / ')
+">/</button>
+
+<button onclick="
+calculation1 = ''
+// console.log(calculation1)
+displayCalculation1()
+// Remember to save the calculation here.
+localStorage.setItem('calculation1', calculation1)
+">Clear</button>
+
+<p class="js-diaplay-calculation1"></p>
+
+
+
+    <script>
+        console.log(document.querySelector('button').innerHTML) 
+        console.log(document.querySelector('.js-button').innerHTML  = '9b done!') 
+
+        // 9f. Continuing from 9e, create a function to reuse the code (if you already did this, skip this exercise).
+        function displayMessage(){
+            const inputElement = document.querySelector('.js-name-input').value;
+            document.querySelector('.js-message').innerHTML = `Your name is: ${inputElement}`
+        }
+
+
+
+/*
+Challenge Exercises
+9g. Create a file 9g.htmI and copy the code from 09-dom-projects.html into this file. In the Amazon Shipping Calculator, enter a cost of 7.99 and click 'Calculate'. What issue do you see? Find a fix for this issue. 
+
+$17.990000000000002
+*/
+
+        function handleCostKeydown(event){
+            if(event.key === 'Enter'){
+                CalculateTotal()
+            }
+        }
+
+        function CalculateTotal(){
+            const inputElement =  document.querySelector('.js-cost-input')
+
+
+            // Issue = the calculation is inaccurate.
+            // Fix = calculate the number in cents and then convert back to dollars at the end.
+
+            // Convert the numbers to cents by * 100.
+            let cost = Number(inputElement.value) * 100
+            if(cost < 4000){
+                cost = cost + 1000
+             }
+
+            // Convert back to dollars at the end.
+            document.querySelector('.js-total-cost').innerHTML = `$${cost / 100}`
+        }
+
+/*
+
+9h. Let's create the project on the right:
+• Whenever we type in the text box, update the text on the page. 
+• To do this, we learn another event called <input onkeyup="...">.
+• This runs code after we press a key and release it (key comes up).
+
+I do it up الحمد الله
+*/
+
+
+
+
+
+/*
+9i. We'll improve the Cart Quantity project.
+• Make a copy of exercise 7i (see the solution for 7i if needed).
+• Create a paragraph (<p></p>) to display the quantity.
+• Whenever we update the quantity, display it on the page instead of in the console. Also, display the quantity when page first loads.
+*/
+let calculation = ' ';
+        function updateCaIculation(value){
+            calculation += value;
+            displayCartQuantity()
+            //document.querySelector('.js-display-cart-quantity').innerHTML = calculation
+            // console.log(calculation);
+        }
+
+        let cartQuantity = 0;
+        function updateCartQuantity(change){
+        if(cartQuantity + change > 10){
+            alert('The cart is full')
+            return                  // An early return make our code cleaner because we can remove the 'else-if' / 'else'.
+        } 
+        if(cartQuantity + change < 0){
+            alert('Not enough items in the cart');
+            return                  // An early return make our code cleaner because we can remove the 'else-if' / 'else'.
+        }
+            cartQuantity += change
+            displayCartQuantity()
+            // document.querySelector('.js-display-cart-quantity').innerHTML = `quantity: ${cartQuantity}`
+            //console.log(`quantity: ${cartQuantity}`)
+        }
+        function displayCartQuantity(){
+            document.querySelector('.js-display-cart-quantity').innerHTML = `quantity: ${cartQuantity}`
+        }
+
+
+
+/*
+9j. We'll improve the calculator project.
+• Make a copy of exercise 8h.
+• Whenever we update the calculation, display it on the page instead of in the console.
+• When the page first loads, if a calculation exists in localStorage, display it on the page.
+*/
+
+let calculation1 = localStorage.getItem('calculation1') || '';
+
+displayCalculation1()
+
+function updateCaIculation(value){
+    calculation1 += value;
+    displayCalculation1()
+    // console.log(calculation1);
+
+    // Remember to save the calculation here.
+    localStorage.setItem('calculation1', calculation1)
+}
+// Optional: you can also create a function in order
+// to reuse this code.
+// function saveCalculation() {
+// localStorage.setItem('calculation1', calculation1);
+// }
+
+function displayCalculation1(){
+    document.querySelector('.js-diaplay-calculation1').innerHTML = calculation1;
+}
+
+     
+    </script>
+</body>
+</html>

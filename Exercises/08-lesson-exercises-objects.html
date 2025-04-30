@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8 Exercises - Objects</title>
+    
+</head>
+<body>
+    
+<!-- 
+8h. We'll add localStorage to the calculator project. First, make a copy of the project from exercise 7g (see the solution for 7g if needed).
+• Whenever we update the calculation, save it using .setltem()
+• When the page is loaded, get the calculation using .getltem()
+• Use a default value of '' if a calculation doesn't exist in local storage
+-->
+    <p>Simple calculator</p>
+        
+    <button onclick="
+        updateCaIculation('1')
+    ">1</button>
+
+    <button onclick="
+        updateCaIculation('2')
+    ">2</button>
+
+    <button onclick="
+        updateCaIculation('3')
+    ">3</button>
+
+    <button onclick="
+        updateCaIculation(' + ')
+    ">+</button>
+
+    <button onclick="
+    updateCaIculation('4')
+    ">4</button>
+
+    <button onclick="
+    updateCaIculation('5')
+    ">5</button>
+
+    <button onclick="
+    updateCaIculation('6')
+    ">6</button>
+
+    <button onclick="
+    updateCaIculation(' - ')
+    ">-</button>
+
+    <button onclick="
+    updateCaIculation('7')
+    ">7</button>
+
+    <button onclick="
+    updateCaIculation('8')
+    ">8</button>
+
+    <button onclick="
+    updateCaIculation('9')
+    ">9</button>
+
+    <button onclick="
+    updateCaIculation(' * ')
+    ">*</button>
+
+    <button onclick="
+    updateCaIculation('0')
+    ">0</button>
+
+    <button onclick="
+    updateCaIculation('.')
+    ">.</button>
+
+<button onclick="
+// Note: eval() takes a string and runs it as code.
+// Avoid using eval() in real world projects since
+// it can potentially be given harmful code to run.
+// Only use eval() for learning purposes.
+calculation = eval(calculation);
+
+// Display the calculation on the page
+// instead of console.log
+displayCalculation();
+
+localStorage.setItem('calculation', calculation);
+">=</button>
+
+    <button onclick="
+    updateCaIculation(' / ')
+    ">/</button>
+
+    <button onclick="
+    calculation = ''
+    console.log(calculation)
+
+    // Remember to save the calculation here.
+    localStorage.setItem('calculation', calculation)
+    ">Clear</button>
+
+<!-- 
+
+==> localStorage.setItem() method in JavaScript, the two parameters are:
+
+Key: A string that represents the name of the key you want to create or update.
+Value: The value you want to store. This value must be a string.
+-->
+    <button onclick="
+        // Note: eval() takes a string and runs it as code.
+        // Avoid using eval() in real world projects since
+        // it can potentially be given harmful code to run.
+        // Only use eval() for learning purposes.
+        calculation = eval(calculation);
+
+        // Remember to save the calculation here.
+        localStorage.setItem('calculation', calculation)
+        console.log(calculation);
+    ">=</button>
+
+
+
+
+
+
+
+
+<!-- 
+• Create 2 buttons to play the game.  heads   tails
+• When clicking 'heads' play the game with guess = 'heads'.
+• When clicking 'tails' play the game with guess = 'tails'.
+-->
+
+<br>
+<br>
+<br>
+
+<button onclick="playGame('heads')">Heads</button>
+
+<button onclick="playGame('tails')">Tails</button>
+
+
+    <script>
+        
+        let calculation = localStorage.getItem('calculation') || '';
+
+        function updateCaIculation(value){
+            calculation += value;
+            console.log(calculation);
+
+            // Remember to save the calculation here.
+            localStorage.setItem('calculation', calculation)
+        }
+      // Optional: you can also create a function in order
+      // to reuse this code.
+      function saveCalculation() {
+        localStorage.setItem('calculation', calculation);
+      }
+
+
+// 8a. Let's say in the Amazon project, we have a basketball product. This product has a name of 'basketball', a price of 2095 cents. Create an object to represent this product and display it in the console.
+
+const product = {
+    name: 'basketball',
+    price: 2095,
+}
+// 8b. Continuing from 8a, let's say we want to increase the price by 500 cents. Use dot notation to increase the price, and display the updated object in the console.
+product.price += 500
+// 8c. Using bracket notation, add a property 'delivery-time' to the object with the value 13 days. Display the updated object in the console.
+product['delivery-time'] = '13 days'
+console.log(product)
+// 8d. Create a function 'comparePrice(product1, product2)', which takes 2 products (with 'name' and 'price' properties) and returns the product that is less expensive. Create 2 products and try out the function.
+
+function comparePrice(product1, product2){
+    if(product1.price < product2.price){
+        return `Product ${product1.name} is less expensive ${product2.name} `
+    }else{
+        return `Product ${product2.name} is less expensive ${product1.name} `
+    }
+}
+const product1 = {
+    name: 'basketball',
+    price: 2095,
+}
+const product2 = {
+    name: 'Socks',
+    price: 1090,
+}
+console.log(comparePrice(product1, product2))
+
+// 8e. Create a function 'isSameProduct(product1, product2)', which returns true if 2 products have the same values inside ('name' and 'price'). If not, return false. Create 2 products and try out the function. (Hint: objects are references so you can't compare them directly).
+
+function isSameProduct(product1, product2){
+    if(product1.name === product2.name && product1.price === product2.price){
+        return true
+    }else{
+        return false
+    }
+}
+// Here is an alternative solution that uses less code.
+
+// function isSameProduct(product1, product2) {
+//         return (
+//           product1.name === product2.name &&
+//           product1.price === product2.price
+//         );
+//       }
+console.log(isSameProduct(product1, product2))
+
+// 8f. Using Google or an A1. tool, search how to convert a string to all lowercase with JavaScript ('Good Morning' => 'good morning)
+console.log('Good Morning'.toLowerCase());
+console.log('TESTING'.toLowerCase());
+
+
+// 8g. Search how to repeat a string many times ('test' 2 times => 'testtest')
+console.log('test'.repeat(2));
+
+
+/*
+Challenge Exercises
+8i. We'll improve the coin flip game from exercise 6j to be like the rock paper scissors game.
+• Copy the code from exercise 6j (see the solution for 6j if needed).
+• Create 2 buttons to play the game.  heads   tails
+• When clicking 'heads' play the game with guess = 'heads'.
+• When clicking 'tails' play the game with guess = 'tails'.
+• Create a function 'playGame(guess)' to reuse the code.
+
+Bj. Create a score object { wins: O, losses: O }, update the score each time after playing, and display the score in the console.
+
+8k. Use localStorage to save and load the score (hint: you'll need to use JSON.stringify() to convert the score object to a string).
+*/
+
+
+      // We can use const here since score is a reference
+      // so we can modify it even if it uses const.
+      // key: The key is a string that represents the name of the item you want to retrieve from localStorage.
+      const score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0 };
+
+      function playGame(guess) {
+        const randomNumber = Math.random();
+        const result = randomNumber < 0.5 ? 'heads' : 'tails';
+
+        console.log(guess === result ? 'You win!' : 'You lose!');
+
+        if (guess === result) {
+          score.wins++;
+        } else {
+          score.losses++;
+        }
+        console.log(score);
+
+        localStorage.setItem('score', JSON.stringify(score));
+      } 
+
+    </script>
+</body>
+</html>

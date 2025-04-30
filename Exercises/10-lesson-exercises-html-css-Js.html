@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10 Exercises - HTML, CSS, and JavaScript Together</title>
+    <style>
+        .amazon-button{
+            background-color: rgb(255, 216, 20);
+            border: none;
+            width: 100px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .request-now-button{
+            background-color: rgb(230, 230, 230);
+            color: rgb(0, 0, 0);
+            border: none;
+            width: 120px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .schedule-later-button{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            width: 150px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .toggle-button{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            width: 150px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .is-toggled{
+            background-color: red;
+            /* color: rgb(255, 255, 255); */
+            border: none;
+            width: 150px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .cost-input{
+            font-size: 15px;
+            padding: 10px;
+        }
+        .calculate-button{
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 12px 15px;
+            cursor: pointer;
+        }
+        /* Give the error message a red color. */
+        .error-message {
+          color: red;
+        }
+    </style>
+</head>
+<body>
+    
+
+<!-- 
+Create the following buttons using HTML and CSS. The styles don't have to be exact (just use your best judgment).
+
+10a. Amazon button
+-->
+<button class="amazon-button">Add to Cart</button>
+
+<!-- 
+10b. Uber buttons Request now rgb(230, 230, 230)
+-->
+<button class="request-now-button">Request now</button>
+<button class="schedule-later-button">Schedule for later</button>
+
+
+<!-- 
+10c. classList has another method, classList.contains('class-name'), which checks if an element has a class.
+    • Create a button: <button class="js-button">Test</button>
+    • Use document.querySelector() and classList.contains('js-button') to check if this button has the class 'js-button'.
+    • console.log() the result.    
+-->
+<button class="js-button">isClassContainTest</button>
+
+<!-- 
+10d. Create the button on the right. When clicking this button, it should turn ON / OFF. Hints:
+• When clicking the button, add or remove the class 'is-toggled', and use it to change the styling.
+• Use if (classList.contains('is-toggIed')) to decide whether to add or remove the 'is-toggled' class.
+Gaming
+-->
+
+<br>
+<br>
+<br>
+<!-- /* The word "toggle" means turn on/off. */ -->
+<button class="toggle-button js-toggle-button1" onclick="isToggled('.js-toggle-button1')">Gamming</button>
+
+
+<!-- 
+10e. Continuing from 10d, create 3 buttons that can be turned ON / OFF.
+Gaming
+Music
+Tech
+-->
+
+<button class="toggle-button js-toggle-button2" onclick="isToggled('.js-toggle-button2')">Music</button>
+
+<button class="toggle-button js-toggle-button3" onclick="isToggled('.js-toggle-button3')">Tech</button>
+
+
+
+
+ <!-- Project 2 -->
+ <p>Amazon Shipping calculator</p>
+ <input class="js-cost-input cost-input" placeholder="Cost of order" onkeydown="handleCostKeydown(event)"> 
+ <button onclick="CalculateTotal()" class="calculate-button" >Calculate</button>
+ <p class="js-total-cost" ></p>
+ <p class="js-error-message error-message"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const isClassContain = document.querySelector('.js-button')
+        console.log(isClassContain.classList.contains('js-button'))   // true
+
+// 10f. Continuing from IOe, use a function to reuse the code, and separate each language into its own file (if you didn't do this already).
+// 10g. Modify 10f so that only 1 button can be ON at a time.
+        function isToggled(selector){
+            const button = document.querySelector(selector)
+
+            if(!button.classList.contains('is-toggled')){
+                turnOffPreviousButton()
+                button.classList.add('is-toggled')
+                
+            }else{
+            
+            button.classList.remove('is-toggled')
+        
+            }
+        }
+
+        function turnOffPreviousButton(){
+            const previousButton = document.querySelector('.is-toggled')
+            if(previousButton){
+                previousButton.classList.remove('is-toggled')
+            }
+        }
+
+/*
+10h. Create a file 10h.htmI and copy the code from 10-dom-projects.html. In the Amazon Shipping Calculator, if we type a number less than O, display a red error message below the text box:
+
+Calculate
+Error: cost cannot be less than $0
+*/
+
+function handleCostKeydown(event){
+            if(event.key === 'Enter'){
+                CalculateTotal()
+            }
+        }
+
+        function CalculateTotal(){
+            const inputElement =  document.querySelector('.js-cost-input')
+            let cost = Number(inputElement.value) 
+            if (cost < 0) {
+                    document.querySelector('.js-error-message')
+                        .innerHTML = 'Error: cost cannot be less than $0';
+                    // If we display an error, we can use return to
+                    // end this function immediately. This is called
+                    // an "early return" and it makes the code cleaner
+                    // because it reduces nesting / indents.
+                    return;
+            } 
+
+            if(cost < 40){
+                cost = cost + 10
+             }
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`
+        }
+
+    </script>
+</body>
+</html>

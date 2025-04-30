@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array and Loop</title>
+</head>
+<body>
+    <!-- 
+    Arrays ==> List of values
+    - Another type of value.
+    - Represents a list of values.
+    - To get a specific value in an array ==> []
+    - Inside an array we can put any type of value.
+    - An array is an object, it's a special type of object.
+    - Arrays have properties and methods.
+    - .push() Adds a value to the end of the array.
+    - .splice() Removes a value from an array.
+    -->
+
+
+    <script>
+        // const myArray = [
+        //     10, 
+        //     20, 
+        //     30
+        // ]
+        // console.log(myArray)    // [10, 20, 30]
+        // console.log(myArray[0]) // 10
+        
+        // myArray[0] = 99
+        // console.log(myArray[0]) // 99
+
+        // [1, 'Hello', true, {name: 'socks'}, [1.2]]
+        // console.log(typeof [1.2])  // object
+        // console.log(Array.isArray([1.2]) ) // true
+        // console.log(myArray.length) // 3
+
+        // myArray.push(100)
+        // console.log(myArray) // [10, 20, 30, 100]
+
+        // // splice(Index we want to remove, Number of values to remove).
+        // myArray.splice(0, 1)
+        // console.log(myArray)  // [20, 30, 100]
+
+
+
+        /*
+        while vs For Loop
+
+        standard loop ==> for.
+        Non-standard loop ==> while.
+        */
+
+        // loops create a scope.
+         let i = 1           // loop Varriable
+         while (i < 5){      // loop condition
+            i++              // Increment Step
+         }
+
+
+         for(let i = 1; i <= 5; i++){
+            console.log(i)
+         }
+
+
+
+        // Generate random numbers until one that's at least 0.5
+        // Non-standard loop ==> while.
+        let randomNumber = 0
+        while (randomNumber < 0.5){
+            randomNumber = Math.random()
+        }
+        console.log(randomNumber) 
+
+
+        /*
+        Looping Through an array:
+        1. Go through each value of an array one by one.
+        2. Do something with each value.
+        */
+        // Run a loop from 0 to the last index.
+        const todoList = [
+            'Make Dinner',
+            'Wash Dishes',
+            'Watch Youtube'
+        ]
+        for (let index = 0; index <= todoList.length -1; index++){
+            const value = todoList[index]
+            console.log(value) 
+        }
+
+        
+        /*
+        Problem:
+        we have an array of numbers [1, 1, 3]
+        How do we calculate the total?
+        */
+
+       // Accumulator Pattern
+       // 1. create a variable to store the result.
+       // 2. loop through the array and update the result.
+        // const nums = [1, 1, 3]
+        // let total = 0          // Accumulator Variable
+
+        // for(let i =0; i< nums.length; i++){
+        //     const num = nums[i] 
+        //     total += num
+        // }
+        // console.log(total)
+
+
+        // create a copy of the array with each number doubled ==> Result is  [2, 2, 6]
+
+        // const numsDoubled = []  // We can use different types of values to accumlate the result ==> []
+
+        // for(let i =0; i< numsDoubled.length; i++){
+        //     const num = nums[i]
+        //     numsDoubled.push(num * 2) 
+        // }
+        // console.log(numsDoubled)  // [2, 2, 6]
+
+         
+
+        // Advanced: More Details about arrays and loops
+
+
+        // Array are reference
+        const array1 = [1, 2, 3]     // reference
+
+        const array2 = array1.slice() 
+        array2.push(4)
+        console.log(array1)  // [1, 2, 3, 4]     // this is wrong to avoid that use slice()    // [1, 2, 3]
+        console.log(array2)  // [1, 2, 3, 4]  
+
+        // Shortcut: Destructuring.
+
+        const array3 = [1, 2, 3]
+        // Get the first and second value out ot this array.  Using Destructuring.
+        const [firstValue, secondValue] = [1, 2, 3]
+
+        // More details about loops.    1.break = exit a loop early.   2.continue = skip 1 iteration.
+        for(let i =1; i <= 10; i++){
+            // Skip a number if it's divisible by 3
+            // divisible by 3 = can be divided evenly into 3
+            if (i % 3 === 0){
+                continue;
+            }
+            // When i =8, stop this loop early.
+            if (i === 8){
+                break;
+            }
+            console.log(i)
+        }
+
+        // count from 1 to 10 using a while loop.
+        // Skip number that are divisble by 3 (3, 6, 9)
+        let r =1
+        while(r <= 10){
+            if(r % 3 === 0){
+                r++
+                continue
+            }
+            console.log(r) // 1 2 4 5 7 8 10
+        }
+
+
+
+
+
+
+
+        // How to use loops with functions
+
+        function doubleArray(nums){
+            const numsDoubled = []
+
+            for(let i =0; i< numsDoubled.length; i++){
+                // if we see the number 0, stop this loop early.
+                if (num === 0){
+                    // break;
+                    return numsDoubled;   // Another way to break the loop.
+                }
+                const num = nums[i]
+                numsDoubled.push(num * 2) 
+            }
+            return numsDoubled
+            console.log()
+        }
+        console.log(doubleArray([1, 1, 3]))
+        console.log(doubleArray([2, 1, 5]))
+
+    // 11-In this lesson:
+        // 1. Arrays = list of values.
+        // 2. Loops(while loop, for loop).
+        // 3. Accumulator pattern.
+        // 4. Created a Todo list project.
+        // 5. Arrays are references, destructuring.
+        // 6. More features of loops: break, continue, loops inside a function.
+
+    </script>
+</body>
+</html>

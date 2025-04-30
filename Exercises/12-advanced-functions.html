@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+</head>
+<body>
+    
+
+
+    <button class="js-button-start"> Start </button>
+
+
+
+    <br>
+    <br>
+    <br>
+
+    <button onclick="displayMessage()" class="js-button"> Add to cart </button>
+    <p class="js-message"></p>
+
+
+
+    <button onclick="
+    messages++;
+    displayNotification();
+    
+    ">Add</button>
+
+    <button onclick="
+
+     if (messages > 0) {
+        messages--;
+
+        // If there are no new messages, stop displaying the notification in the tab.
+        if (messages === 0) {
+          stopNotification();
+        }
+      }
+    
+    ">Remove</button>
+
+
+    <script>
+
+// 12a. Create a variable called 'add' and save a function inside. This function will console.Iog(2 + 3); Run the function twice.
+const add = function(){
+    console.log(2 + 3)
+}
+add()
+add()
+
+/*
+12b. Continuing from exercise 12a, create a function runTwice(fun) that takes a function (as a parameter) and runs it twice.
+ • runTwice(function() { console.log('12b') }; => console.Iog('12b') twice
+ • runTwice(add); => console.log(5) twice
+*/
+
+function runTwice(fun){
+    fun()
+    fun()
+}
+
+runTwice(function(){
+    console.log('12b')
+})
+
+
+runTwice(add)
+
+
+// 12c. Create the button below. When clicking the button, after 1 second, the text inside the button changes to 'Finished!' (Hint: use setTimeout() and the DOM).
+
+
+      // Grouping the JavaScript code into a function is optional, but it is a bit cleaner.
+    //   function updateButton() {
+    //     const button = document.querySelector('.js-button');
+
+    //     setTimeout(function() {
+    //       button.innerHTML = 'Finished!';
+    //     }, 1000);
+    //   }
+
+/*
+12d. Continuing from exercise 12c, modify the button so that when we click it, the text immediately changes to 'Loading...', and then after
+1 second, it changes to Finished!'
+Finished!
+*/
+
+    function updateButton() {
+            const button = document.querySelector('.js-button');
+
+
+            button.innerHTML = 'Loading...';
+            setTimeout(function() {
+            button.innerHTML = 'Finished!';
+            }, 1000);
+            
+        }
+
+
+
+
+/*
+12e. Create the 'Add to cart' button below. When clicking this button, display the message 'Added' below the button. Then, after 2 seconds,
+remove the message.
+*/
+
+        // function displayMessage() {
+
+        //     const messageElement = document.querySelector('.js-message')
+        //     messageElement. innerHTML = 'Added'
+
+            
+        //     setTimeout(function() {
+        //     messageElement.innerHTML = '';
+        //     }, 1000);
+            
+        // }
+
+/*
+Challenge Exercises
+12f. Continuing from 12e, if we click the button, wait 1 to 1.5 seconds, and then click the button again, notice that the second time, the message disappears very quickly (because the first setTimeout is still running and will make the message disappear very soon).
+• Modify the code so when we click the button, it "refreshes" the 2 second wait time (waits for 2 seconds again and removes message).
+• Hint: you can cancel the previous setTimeout using clearTimeout()
+*/
+
+    let timeoutId;
+    function displayMessage() {
+
+
+
+    const messageElement = document.querySelector('.js-message')
+    messageElement.innerHTML = 'Added'
+
+    clearTimeout(timeoutId)
+
+    timeoutId = setTimeout(function() {
+        messageElement.innerHTML = '';
+    }, 2000);
+
+    }
+
+
+// 12g. Imagine we're creating a messaging app. Use setlnterval() and document.title to create the feature on the right (the title changes every 1 second).
+
+// setInterval(function(){
+//     if(document.title === 'App'){
+//         document.title = '(2) New Messages'
+//     }else{
+//         document.title = 'App'
+//     }
+
+// }, 1000)
+
+
+/*
+12h. Continuing from 12g, instead of displaying "(2) New messages" every time, save the number of messages in a variable: let messages = 2;
+• Use the number in the variable to determine what title to display.
+• Create 2 buttons 'Add' / 'Remove' that increase / decrease the 'messages' variable by 1.
+*/
+
+// let messages = 2;
+
+// setInterval(function() {
+//   if (document.title === 'App') {
+//         document.title = `(${messages}) New messages`;
+
+//   } else {
+//     document.title = 'App';
+//   }
+// }, 1000);
+
+
+// 12i. Continuing from 12h: Don't let 'messages' go below O. If messages O stop changing the title and display 'App' as the title. When messages > O start changing the title again.
+
+
+let messages = 2;
+
+// Save the intervalId in case we need to cancel it.
+
+let intervalId;
+
+// We'll use this variable to keep track of whether or not we're displaying the notification.
+let isDisplayNotification;
+
+// Start displaying the notification in the tab when the page first loads.
+displayNotification()
+
+function displayNotification(){
+    // If we're already displaying the notification, stop this function because we don't want to create 2 intervals at the same time.
+    if(isDisplayNotification){
+        return
+    }
+
+    isDisplayNotification = true;
+
+    intervalId = setInterval(function(){
+        if(document.title === 'App'){
+            document.title = `(${messages} New Messages)`
+        }else{
+            document.title = 'App'
+        }
+    }, 2000)
+}
+
+function stopNotification(){
+    isDisplayNotification = false
+    clearInterval(intervalId)
+    document.write = 'App'
+}
+
+/*
+12j. Create an arrow function called 'multiply' that takes 2 numbers, multiplies them together, and returns the result.
+• multiply(2, 3) => 6
+• multiply(7, 10) => 70
+*/
+
+// const multiply = (a, b) => {
+//     return a * b
+// }
+// console.log(multiply(2, 3))   // 6
+// console.log(multiply(7, 10))  // 70
+
+
+
+
+// 12k. Continuing from exercise 12j, write the arrow function on one line (if you already did this, skip this exercise).
+
+
+const multiply = (a, b) => a * b
+
+
+console.log(multiply(2, 3))   // 6
+console.log(multiply(7, 10))  // 70
+
+
+
+
+
+/*
+121. Create a function countPositive(nums) that takes an array of numbers and returns how many numbers in the array are greater than O. Create this function using .forEach() instead of a loop.
+• countPositive([1, -3, 5]) => 2
+• countPositive([-2, 3, -5, 7, 10]) => 3
+*/
+
+function countPositive(nums){
+
+    let positiveNumbers = 0;
+    // When there is only 1 parameter, the brackets are optional. So we can also write: num => { ... }
+
+    nums.forEach(num => {
+        if(num > 0){
+            positiveNumbers++;
+        }
+    });
+
+    return positiveNumbers
+}
+
+console.log(countPositive([1, -3, 5]))
+console.log(countPositive([-2, 3, -5, 7, 10]))
+
+
+/*
+12m. Create a function addNum(array, num) that takes an array of numbers and returns an array where each number is increased by 'num'. Create this function using .map() instead of a loop.
+• addNum([1, 2, 3], 2) ==> [3, 4, 5]
+• addNum([-2, -1, O, 99], 2) ==> [0, 1, 2, 101]
+Bonus: try to use the one-line shortcut in your solution.
+*/
+
+// .map() = transform an array into another array.
+// 1. creates a new array []
+// 2. Whatever we return ==> added to new array.
+
+// solved by Me
+// function addNum(array, num){
+
+//     let newArray = []
+//     array.map((value)=>{
+//         return newArray.push(value + 2)
+//     })
+
+//     return newArray
+// }
+
+// console.log(addNum([1, 2, 3], 2))         // [3, 4, 5]
+// console.log(addNum([-2, -1, 0, 99], 2))   // [0, 1, 2, 101]
+
+
+// Solved by Simon
+function addNum(array, num) {
+    // When there is only 1 parameter, the brackets are optional. So we can also write: value => value + num
+    return array.map((value) => value + num);
+}
+
+console.log(addNum([1, 2, 3], 2));
+console.log(addNum([-2, -1, 0, 99], 2));
+
+
+
+
+/*
+12n. Create a function removeEgg(foods) that takes an array of strings and returns an array where the string 'egg' is removed. Create this function using .filter() instead of a loop.
+• removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']) => ['apple', 'ham']
+*/
+
+// .filter()
+// 1. creates a new array[]
+// 2. return true, 
+//       ==> put value in array.
+// 3. return false,
+//       ==> not put value in array.
+
+
+// function removeEgg(foods) {
+// // If food is 'egg', the inner function returns false and the food is not included in the result. Otherwise, the inner function returns true and the food is included in the result. 
+//     return foods.filter((food) => food !== 'egg');
+// }
+// console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']))  // ['apple', 'ham']
+
+
+
+/*
+12o. Update exercise 12n to only remove the first 2 eggs from the array. Again, use .filter() instead of a loop.
+• removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']) => ['apple','egg', 'ham']
+*/
+
+
+function removeEgg(foods) {
+    let eggsRemoved = 0;
+    return foods.filter((food) => {
+
+        if(food === 'egg' && eggsRemoved < 2){
+            eggsRemoved++
+            return false
+            console.log(`Number of eggs : ${eggs}`) 
+        }
+
+        return true
+
+    })
+
+}
+console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']))  // ['apple', 'egg', 'ham']
+
+
+
+
+/*
+12p. Go back to the earlier exercises in lesson 12 (12c - 12i) and switch the code to use arrow functions. (When passing a function into another function, use arrow functions. Otherwise, you can use either syntax.)
+*/
+
+// This is the updated code for exercise 12c just as an example. Feel free, to update 12d - 12i as well for more practice.
+
+// function updateButton() {
+//         const button = document.querySelector('.js-button');
+
+//         setTimeout(() => {
+//           button.innerHTML = 'Finished!';
+//         }, 1000);
+//       }
+
+
+
+
+// 12q. Go back to the earlier exercises in lesson 12 (12c - 12i) and instead of using onclick=" " switch the code to use .addEventListener('cIick', ...)
+
+// This is the updated code for exercise 12c just as an example. Feel free, to update 12d - 12i as well for more practice.
+
+
+
+document.querySelector('.js-button-start').addEventListener('click', () => {
+        const button = document.querySelector('.js-button-start');
+
+        setTimeout(() => {
+          button.innerHTML = 'Finished!';
+        }, 1000);
+      })
+
+
+
+
+
+    </script>
+</body>
+</html>

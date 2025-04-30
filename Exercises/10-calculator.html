@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 75px;
+            height: 75px;
+            font-size: 25px;
+            border-radius: 50%;
+            border: none;
+            background-color: #3333;
+        }
+        .display-calc{
+            font-size: 50px;
+            margin: 0;
+        }
+        .operator{
+            background-color: orange;
+        }
+        .clear{
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <p class="js-diaplay-calculation1 display-calc"></p>
+
+    <p>
+    <button onclick="
+        updateCaIculation('1')
+    ">1</button>
+    
+    <button onclick="
+        updateCaIculation('2')
+    ">2</button>
+    
+    <button onclick="
+        updateCaIculation('3')
+    ">3</button>
+    
+    <button class="operator" onclick="
+        updateCaIculation(' + ')
+    ">+</button>
+    </p>
+    <p>
+    <button onclick="
+    updateCaIculation('4')
+    ">4</button>
+    
+    <button onclick="
+    updateCaIculation('5')
+    ">5</button>
+    
+    <button onclick="
+    updateCaIculation('6')
+    ">6</button>
+    
+    <button class="operator" onclick="
+    updateCaIculation(' - ')
+    ">-</button>
+    </p>
+    <p>
+    <button onclick="
+    updateCaIculation('7')
+    ">7</button>
+    
+    <button onclick="
+    updateCaIculation('8')
+    ">8</button>
+    
+    <button onclick="
+    updateCaIculation('9')
+    ">9</button>
+    
+    <button class="operator" onclick="
+    updateCaIculation(' * ')
+    ">*</button>
+    </p>
+    <p>
+    <button onclick="
+    updateCaIculation('0')
+    ">0</button>
+    
+    <button onclick="
+    updateCaIculation('.')
+    ">.</button>
+    
+    <button onclick="
+    // Note: eval() takes a string and runs it as code.
+    // Avoid using eval() in real world projects since
+    // it can potentially be given harmful code to run.
+    // Only use eval() for learning purposes.
+    calculation1 = eval(calculation1);
+    
+    
+    // console.log(calculation1)
+    displayCalculation1()
+    localStorage.setItem('calculation1', calculation1);
+    ">=</button>
+    
+    <button class="operator" onclick="
+    updateCaIculation(' / ')
+    ">/</button>
+    </p> 
+    <button class="clear" onclick="
+    calculation1 = ''
+    // console.log(calculation1)
+    displayCalculation1()
+    // Remember to save the calculation here.
+    localStorage.setItem('calculation1', calculation1)
+    ">Clear</button>
+
+   
+   
+   
+
+
+    <script>
+/*
+
+10i. We'll style the calculator project using CSS.
+
+• Make a copy of exercise 9j.
+• In your browser, go to:
+supersimple.dev/projects/calculator-final
+This is the final design for the project.
+• Using CSS, style the calculator project to look like the final design on the right.
+
+10j. Continuing from exercise 10i, separate each language into its own file (if you didn't do this already).
+
+
+*/
+
+let calculation1 = localStorage.getItem('calculation1') || '';
+
+displayCalculation1()
+
+function updateCaIculation(value){
+    calculation1 += value;
+    displayCalculation1()
+    localStorage.setItem('calculation1', calculation1)
+}
+
+function displayCalculation1(){
+    document.querySelector('.js-diaplay-calculation1').innerHTML = calculation1;
+}
+    </script>
+</body>
+</html>

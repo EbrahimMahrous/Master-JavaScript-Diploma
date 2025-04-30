@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles/12-rock-paper-scissors.css">
+  </head>
+  <body>
+
+    <!-- 
+    10-In this lesson:
+    1. Reviewed css, and added css to projects.
+    2. .classList
+    3. Finished Rock Paper Scissors.
+    4. Organize JavaScript and Css code into separate files.
+    -->
+    <p class="title">Rock Paper Scissors</p>
+    <button class="move-button js-rock-button"><img src="images/rock-emoji.png" class="move-icon" alt=""></button>
+    <button class="move-button js-paper-button"><img src="images/paper-emoji.png" class="move-icon" alt=""></button>
+    <button class="move-button js-scissors-button"><img src="images/scissors-emoji.png" class="move-icon" alt=""></button>
+
+
+
+    <p class="js-result result"></p>
+    <p class="js-moves">
+        <!-- You 
+        <img src="images/rock-emoji.png" class="move-icon" alt=""> 
+        <img src="images/scissors-emoji.png" class="move-icon" alt=""> 
+        computer  -->
+    </p>
+
+    <p class="js-score score"></p>
+   
+    <button onclick="score.wins = 0; score.losses =  0; score.ties =0; localStorage.removeItem('score'); UpdateScoreElement()" class="reset-score-button">Reset Score</button>
+    <button class="auto-play-button" onclick="autoPlay()">Auto Play</button>
+
+    <script src="scripts/12-rock-paper-scissors.js"></script>
+  </body>
+</html>
